@@ -46,8 +46,8 @@ void ScharrThreshold(int, void*) {
 	convertScaleAbs(grad_y, abs_grad_y);
 
 	Mat mod_img;
-	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, mod_img);
-	threshold(mod_img, detected_edges2, 127, 255, THRESH_BINARY | THRESH_OTSU);
+	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, detected_edges2);
+	threshold(detected_edges2, mod_img, 127, 255, THRESH_BINARY | THRESH_OTSU);
 
 	dst2 = Scalar::all(0);
 	cvtColor(mod_img, mod_img, CV_GRAY2BGR);
